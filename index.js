@@ -25,35 +25,35 @@ var Typer={
  
 	addText:function(key){
 		
-		if(key.keyCode==18){
+		if(key.keyCode == 18){
 			Typer.accessCount++; 
 			
-			if(Typer.accessCount>=3){
+			if(Typer.accessCount >= 3){
 				Typer.makeAccess(); 
 			}
 		}
 		
-    		else if(key.keyCode==20){
+    		else if(key.keyCode == 20){
 			Typer.deniedCount++; 
 			
-			if(Typer.deniedCount>=3){
+			if(Typer.deniedCount >= 3){
 				Typer.makeDenied(); 
 			}
 		}
 		
-    		else if(key.keyCode==27){ 
+    		else if(key.keyCode == 27){ 
 			Typer.hidepop(); 
 		}
 		
     		else if(Typer.text){ 
 			var cont=Typer.content(); 
-			if(cont.substring(cont.length-1,cont.length)=="|") 
+			if(cont.substring(cont.length-1,cont.length) == "|") 
 				$("#console").html($("#console").html().substring(0,cont.length-1)); 
-			if(key.keyCode!=8){ 
+			if(key.keyCode != 8){ 
 				Typer.index+=Typer.speed;	
 			}
       		else {
-			if(Typer.index>0) 
+			if(Typer.index > 0) 
 				Typer.index-=Typer.speed;
 			}
 			var text=Typer.text.substring(0,Typer.index)
@@ -63,7 +63,7 @@ var Typer={
 			window.scrollBy(0,50); 
 		}
 		
-		if (key.preventDefault && key.keyCode != 122) { 
+		if ( key.preventDefault && key.keyCode != 122 ) { 
 			key.preventDefault()
 		};  
 		
@@ -82,7 +82,7 @@ var Typer={
 			this.write("|"); // else write it
 	}
 }
-
+ 
 function replaceUrls(text) {
 	var http = text.indexOf("http://");
 	var space = text.indexOf(".me ", http);
@@ -98,7 +98,7 @@ function replaceUrls(text) {
 }
 
 Typer.speed=3;
-Typer.file="tawna.txt"; // add your own name here
+Typer.file="tawna.txt";
 Typer.init();
  
 var timer = setInterval("t();", 30);
@@ -109,3 +109,4 @@ function t() {
 		clearInterval(timer);
 	}
 }
+ 

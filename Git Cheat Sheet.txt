@@ -30,6 +30,8 @@ Branch & Merge
         create a new branch at the current commit
     git checkout
         switch to another branch and check it out into your working directory
+    git push --set-upstream origin [branch]
+        switch to current branch for upstream
     git merge [branch]
         merge the specified branch's history into the current one
     git log

@@ -8,6 +8,7 @@ Setup
 Setup & Init
     git init
         initialize an existing directory as a Git repository
+    git clone
     git clone git@github.com/User/Repo
         retrieve an entire repository from a hosted location via URLd
 Stage & Snapshot

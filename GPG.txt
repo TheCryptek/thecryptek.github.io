@@ -1,31 +1,64 @@
 Generate Keys
     gpg --full-generate-key
-List Public Keys (Last 8 digits is Key ID)
-    gpg --list-keys
-List Private Keys
-    gpg --list-secret-keys
-Export Public Key
-    gpg --export -a "KEY" > public.key
-Export Private Key
-    gpg --export-secret-key -a "KEY" > private.key
-Import Public Keys
-    gpg --import public.key
-Import Private Key
-    gpg --allow-secret-key-import --import private.key
-Delete Public Key
-    gpg --delete-key "Real Name"
-Delete Private Key
-    gpg --delete-secret-key "Real Name"
-Generate Fingerprint
-    gpg --fingerprint "Real Name"
-Encrypt Data
-    gpg -e -u "Sender (Your) Real Name" -r "Receiver User Name" file.txt
-Decrypt Data
-    gpg -d file.txt.gpg
-Upload Key to keyserver
+Importing
+    gpg --import [KeyFile] 
+        Imports a key contained in a File
+    gpg --recv-keys [KeyID1] [KeyID2]
+        Receives the key which corresponds to [KeyID1], [KeyID2], etc from the provided keyserver
+    gpg --search-keys [Term1] [Term2]
+        Searches for keys which containt [Term1] and [Term2]
+    gpg --allow-secret-key-import --import [Key].priv
+        Import Private key
+Exporting
+    gpg --export -a [KeyID] > [Key].pub
+        Output a public key to a plaintext file
+    gpg --export-secret-key -a [Key] > [Key].priv
+        Output a private key to a plaintext file
     gpg --send-keys [KeyID]
-Download key from keyserver
-    gpg --recv-keys [KeyID]
+        Send public key to keyserver
+Refreshing
+    gpg --refresh-keys
+        Updates your version of a key
+Printing Key Information
+    gpg --list-keys
+        Print a list of all the keys in your public keyring
+    gpg --list-secret-keys
+        Print a list of all the keys in your private keyring
+    gpg --list-sigs [KeyID]
+        Print a list of all [KeyID] and their signatures
+    gpg --fingerprint
+        Print a list of all keys and their fingerprints
+Signing a Key
+    gpg --fingerprint [KeyID]
+        Check the local key fingerprint against reported fingerprint
+     gpg --sign-key [KeyID]
+        If fingerprints match, sign the key with your private key
+Signing
+    gpg -s [File]
+        Produces [File].gpg, a signed version
+    gpg --detach-sign [File]
+        Produces a seperate signature [File].sig
+    gpg --verify [File].sig [File]
+        Verify a files signature
+Deleting a Key
+    gpg --delete-key [KeyID]
+        Delete the public key
+    gpg --delete-secret-key [KeyID]
+        Deletes private key
+Encrypt Data
+    gpg -e -u "Sender (Your) Real Name" -r "Receiver User Name" [File].txt
+        Encrypt the file for a receiver
+Decrypt Data
+    gpg -d [File].gpg
+Viewing Keys
+    gpg --list-keys
+        Lists keys in your public keyring
+    gpg --list-secret-keys
+        Lists keys in your private keyring
+    gpg --fingerprint [KeyID]
+        Lists a key and the fingerprint. [KeyID] is the last 8 digits of the fingerprint
+    
+  
 Email keys to yourself
     swaks --attach public.key --attach private.key --body "GPG Keys for 'hostname'" --h-Subject "GPG Keys for 'hostname'" -t email
     

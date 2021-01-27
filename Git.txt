@@ -8,7 +8,7 @@ Setup
 Setup & Init
     git init
         initialize an existing directory as a Git repository
-    git clone [url]
+    git clone git@github.com/User/Repo
         retrieve an entire repository from a hosted location via URLd
 Stage & Snapshot
     git status
@@ -31,9 +31,9 @@ Branch & Merge
     git checkout
         switch to another branch and check it out into your working directory
     git push --set-upstream origin [branch]
-        switch to current branch for upstream
+        set upstream branch to branch you are in
     git merge [branch]
         merge the specified branch's history into the current one
     git log
         show all commits in the current branch's history
-        
+      

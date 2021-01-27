@@ -1,0 +1,35 @@
+Generate Keys
+    gpg --full-generate-key
+List Public Keys (Last 8 digits is Key ID)
+    gpg --list-keys
+List Private Keys
+    gpg --list-secret-keys
+Export Public Key
+    gpg --export -a "KEY" > public.key
+Export Private Key
+    gpg --export-secret-key -a "KEY" > private.key
+Import Public Keys
+    gpg --import public.key
+Import Private Key
+    gpg --allow-secret-key-import --import private.key
+Delete Public Key
+    gpg --delete-key "Real Name"
+Delete Private Key
+    gpg --delete-secret-key "Real Name"
+Generate Fingerprint
+    gpg --fingerprint "Real Name"
+Encrypt Data
+    gpg -e -u "Sender (Your) Real Name" -r "Receiver User Name" file.txt
+Decrypt Data
+    gpg -d file.txt.gpg
+Upload Key to keyserver
+    gpg --send-keys [KeyID]
+Download key from keyserver
+    gpg --recv-keys [KeyID]
+Email keys to yourself
+    swaks --attach public.key --attach private.key --body "GPG Keys for 'hostname'" --h-Subject "GPG Keys for 'hostname'" -t email
+    
+    
+Change keyserver
+    nano ~/.gnupg/gpg.conf
+        keyserver pgp.mit.edu
